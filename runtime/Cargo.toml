@@ -16,6 +16,16 @@ publish = false
 parity-scale-codec = { version = "3.0.0", default-features = false }
 scale-info = { version = "2.6.0", default-features = false }
 
+# this is a frame-based runtime, thus importing `frame` with runtime feature enabled.
+frame-support = { version = "30.0.0", default-features = false, features = [
+	"experimental",
+	"runtime",
+] }
+frame-system = { version = "30.0.0", default-features = false, features = [
+	"experimental",
+	"runtime",
+] }
+
 # pallets that we want to use
 pallet-balances = { version = "30.0.0", default-features = false }
 pallet-sudo = { version = "30.0.0", default-features = false }
