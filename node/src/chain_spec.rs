@@ -42,7 +42,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
 
 /// Configure initial storage state for FRAME pallets.
 fn testnet_genesis() -> Value {
-	use frame::traits::Get;
+	use sp_runtime::traits::Get;
 	use runtime::interface::{Balance, MinimumBalance};
 	let endowment = <MinimumBalance as Get<Balance>>::get().max(1) * 1000;
 	let balances = AccountKeyring::iter()

@@ -47,8 +47,12 @@ sp-runtime = { version = "33.0.0" }
 
 substrate-frame-rpc-system = { version = "30.0.0" }
 
-frame-support = { version = "30.0.0", default-features = false }
-frame-system = { version = "30.0.0", default-features = false }
+frame-support = { version = "30.0.0", default-features = false, features = [
+	"experimental",
+] }
+frame-system = { version = "30.0.0", default-features = false, features = [
+	"experimental",
+] }
 runtime = { package = "minimal-template-runtime", path = "../runtime" }
 
 [build-dependencies]

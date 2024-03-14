@@ -28,4 +28,4 @@ frame-system = { version = "30.0.0", default-features = false }
 
 [features]
 default = ["std"]
-std = ["codec/std", "scale-info/std"]
+std = ["codec/std", "frame-support/std", "frame-system/std", "scale-info/std"]
