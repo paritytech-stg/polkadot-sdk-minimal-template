@@ -15,15 +15,7 @@ jobs:
       image: docker.io/paritytech/ci-unified:bullseye-1.75.0-2024-01-22-v20240109
     steps:
       - uses: actions/checkout@v3
-      - name: Print cargo tree in pallet
+      - name: Build node
         run:
-          cargo tree --depth 1
-        working-directory: pallets/template
-      - name: Print cargo tree in runtime
-        run:
-          cargo tree --depth 1
-        working-directory: runtime
-      - name: Print cargo tree in node
-        run:
-          cargo tree --depth 1
+          cargo build -p minimal-template-node
         working-directory: node
