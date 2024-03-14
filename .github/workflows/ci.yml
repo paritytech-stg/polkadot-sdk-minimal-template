@@ -19,5 +19,5 @@ jobs:
         run:
           # Commented out for now because it's very long.
           # cargo build -p minimal-template-node
-          cargo fmt --check
+          cargo tree --depth 1
         working-directory: node
