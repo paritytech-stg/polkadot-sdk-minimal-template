@@ -6,7 +6,7 @@ license = "MIT-0"
 
 
 
-
+edition = "2021"
 publish = false
 
 [lints]
@@ -61,7 +61,6 @@ std = [
 
 	"sp-api/std",
 	"sp-block-builder/std",
-#	"sp-consensus-aura/std",
 	"sp-core/std",
 	"sp-genesis-builder/std",
 	"sp-inherents/std",
@@ -69,10 +68,7 @@ std = [
 	"sp-runtime/std",
 	"sp-session/std",
 	"sp-std/std",
-#	"sp-storage/std",
 	"sp-transaction-pool/std",
-#	"sp-version/std",
-#	"sp-weights/std",
 
 	"pallet-balances/std",
 	"pallet-sudo/std",

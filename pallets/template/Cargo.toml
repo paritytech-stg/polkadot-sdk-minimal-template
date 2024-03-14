@@ -6,7 +6,7 @@ license = "MIT-0"
 
 
 
-
+edition = "2021"
 publish = false
 
 [lints]
