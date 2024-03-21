@@ -3,15 +3,11 @@ name = "minimal-template-node"
 description = "A miniaml Substrate-based Substrate node, ready for hacking. (polkadot v1.9.0)"
 version = "0.1.0"
 license = "MIT-0"
-
-
-
 edition = "2021"
 publish = false
 build = "build.rs"
 
 [lints]
-
 
 [package.metadata.docs.rs]
 targets = ["x86_64-unknown-linux-gnu"]

@@ -3,14 +3,10 @@ name = "minimal-template-runtime"
 description = "A solochain runtime template built with Substrate, part of Polkadot Sdk. (polkadot v1.9.0)"
 version = "0.1.0"
 license = "MIT-0"
-
-
-
 edition = "2021"
 publish = false
 
 [lints]
-
 
 [dependencies]
 parity-scale-codec = { version = "3.0.0", default-features = false }
