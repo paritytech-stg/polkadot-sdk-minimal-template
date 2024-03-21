@@ -241,10 +241,10 @@ impl_runtime_apis! {
 // https://github.com/paritytech/substrate/issues/10579#issuecomment-1600537558
 pub mod interface {
     use super::Runtime;
-    use frame::deps::frame_system;
+    use polkadot_sdk_frame::deps::frame_system;
 
     pub type Block = super::Block;
-    pub use frame::runtime::types_common::OpaqueBlock;
+    pub use polkadot_sdk_frame::runtime::types_common::OpaqueBlock;
     pub type AccountId = <Runtime as frame_system::Config>::AccountId;
     pub type Nonce = <Runtime as frame_system::Config>::Nonce;
     pub type Hash = <Runtime as frame_system::Config>::Hash;
