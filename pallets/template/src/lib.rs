@@ -1,4 +1,4 @@
-//! A shell pallet built with [`frame`].
+//! A shell pallet built with [`polkadot_sdk_frame`].
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
@@ -9,11 +9,11 @@ pub use pallet::*;
 
 #[polkadot_sdk_frame::pallet]
 pub mod pallet {
-    use super::*;
+	use super::*;
 
-    #[pallet::config]
-    pub trait Config: polkadot_sdk_frame::deps::frame_system::Config {}
+	#[pallet::config]
+	pub trait Config: frame_system::Config {}
 
-    #[pallet::pallet]
-    pub struct Pallet<T>(_);
+	#[pallet::pallet]
+	pub struct Pallet<T>(_);
 }
