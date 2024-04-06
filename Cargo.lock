@@ -3893,7 +3893,7 @@ checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
 
 [[package]]
 name = "minimal-template-node"
-version = "0.0.0"
+version = "0.1.0"
 dependencies = [
  "clap",
  "futures",
@@ -3928,7 +3928,7 @@ dependencies = [
 
 [[package]]
 name = "minimal-template-runtime"
-version = "0.0.0"
+version = "0.1.0"
 dependencies = [
  "pallet-balances",
  "pallet-minimal-template",
@@ -4399,7 +4399,7 @@ dependencies = [
 
 [[package]]
 name = "pallet-minimal-template"
-version = "0.0.0"
+version = "0.1.0"
 dependencies = [
  "parity-scale-codec",
  "polkadot-sdk-frame",

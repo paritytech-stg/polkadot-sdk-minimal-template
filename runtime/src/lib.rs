@@ -21,7 +21,7 @@
 #[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
-use polkadot_sdk_frame::{
+use frame::{
     deps::frame_support::{
         genesis_builder_helper::{build_config, create_default_config},
         weights::{FixedFee, NoFee},
@@ -86,7 +86,7 @@ parameter_types! {
     pub const Version: RuntimeVersion = VERSION;
 }
 
-#[derive_impl(frame_system::config_preludes::SolochainDefaultConfig)]
+#[derive_impl(frame_system::config_preludes::SolochainDefaultConfig as frame_system::DefaultConfig)]
 impl frame_system::Config for Runtime {
     type Block = Block;
     type Version = Version;
@@ -94,18 +94,18 @@ impl frame_system::Config for Runtime {
     type AccountData = pallet_balances::AccountData<<Runtime as pallet_balances::Config>::Balance>;
 }
 
-#[derive_impl(pallet_balances::config_preludes::TestDefaultConfig)]
+#[derive_impl(pallet_balances::config_preludes::TestDefaultConfig as pallet_balances::DefaultConfig)]
 impl pallet_balances::Config for Runtime {
     type AccountStore = System;
 }
 
-#[derive_impl(pallet_sudo::config_preludes::TestDefaultConfig)]
+#[derive_impl(pallet_sudo::config_preludes::TestDefaultConfig as pallet_sudo::DefaultConfig)]
 impl pallet_sudo::Config for Runtime {}
 
-#[derive_impl(pallet_timestamp::config_preludes::TestDefaultConfig)]
+#[derive_impl(pallet_timestamp::config_preludes::TestDefaultConfig as pallet_timestamp::DefaultConfig)]
 impl pallet_timestamp::Config for Runtime {}
 
-#[derive_impl(pallet_transaction_payment::config_preludes::TestDefaultConfig)]
+#[derive_impl(pallet_transaction_payment::config_preludes::TestDefaultConfig as pallet_transaction_payment::DefaultConfig)]
 impl pallet_transaction_payment::Config for Runtime {
     type OnChargeTransaction = pallet_transaction_payment::CurrencyAdapter<Balances, ()>;
     type WeightToFee = NoFee<<Self as pallet_balances::Config>::Balance>;
@@ -114,7 +114,7 @@ impl pallet_transaction_payment::Config for Runtime {
 
 impl pallet_minimal_template::Config for Runtime {}
 
-type Block = polkadot_sdk_frame::runtime::types_common::BlockOf<Runtime, SignedExtra>;
+type Block = frame::runtime::types_common::BlockOf<Runtime, SignedExtra>;
 type Header = HeaderFor<Runtime>;
 
 type RuntimeExecutive =
@@ -241,10 +241,10 @@ impl_runtime_apis! {
 // https://github.com/paritytech/substrate/issues/10579#issuecomment-1600537558
 pub mod interface {
     use super::Runtime;
-    use polkadot_sdk_frame::deps::frame_system;
+    use frame::deps::frame_system;
 
     pub type Block = super::Block;
-    pub use polkadot_sdk_frame::runtime::types_common::OpaqueBlock;
+    pub use frame::runtime::types_common::OpaqueBlock;
     pub type AccountId = <Runtime as frame_system::Config>::AccountId;
     pub type Nonce = <Runtime as frame_system::Config>::Nonce;
     pub type Hash = <Runtime as frame_system::Config>::Hash;
