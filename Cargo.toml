@@ -1,3 +1,10 @@
+[workspace.package]
+authors = ["Parity Technologies <admin@parity.io>"]
+edition = "2021"
+repository = "https://github.com/paritytech/polkadot-sdk.git"
+license = "MIT-0"
+homepage = "https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/index.html"
+
 [workspace]
 members = [
     "node",
@@ -5,3 +12,9 @@ members = [
     "runtime",
 ]
 resolver = "2"
+
+[workspace.dependencies]
+serde = { version = "1.0.197", default-features = false }
+serde_json = { version = "1.0.114", default-features = false }
+
+[workspace.lints]
