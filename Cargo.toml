@@ -14,4 +14,8 @@ members = [
 resolver = "2"
 
 [workspace.dependencies]
-serde_json = { version = "1.0.114", default-features = false }
+
+minimal-template-runtime = { path = "./runtime" }
+pallet-minimal-template = { path = "./pallets/template" }
+
+[workspace.dependencies]
