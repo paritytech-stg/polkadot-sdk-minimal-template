@@ -1,4 +1,4 @@
-//! # Minimal Template
+//! # Minimal Template test
 //!
 //! This is a minimal template for creating a blockchain using the Polkadot SDK.
 //!
