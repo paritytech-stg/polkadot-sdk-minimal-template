@@ -35,10 +35,10 @@ sc-service = { version = "0.45.0", default-features = false }
 sc-telemetry = { version = "24.0.0", default-features = false }
 sc-transaction-pool = { version = "37.0.0", default-features = false }
 sc-transaction-pool-api = { version = "37.0.0", default-features = false }
-serde_json = { version = "1.0.114", default-features = false }
+serde_json = { version = "1.0.121", default-features = false }
 sp-api = { version = "34.0.0", default-features = false }
 sp-block-builder = { version = "34.0.0", default-features = false }
-sp-blockchain = { version = "37.0.0", default-features = false }
+sp-blockchain = { version = "37.0.1", default-features = false }
 sp-io = { version = "38.0.0", default-features = false }
 sp-keyring = { version = "39.0.0", default-features = false }
 sp-runtime = { version = "39.0.0", default-features = false }
@@ -48,7 +48,7 @@ substrate-build-script-utils = { version = "11.0.0", default-features = false }
 codec = { version = "3.6.12", default-features = false, package = "parity-scale-codec" }
 pallet-balances = { version = "38.0.0", default-features = false }
 pallet-sudo = { version = "37.0.0", default-features = false }
-pallet-timestamp = { version = "36.0.0", default-features = false }
+pallet-timestamp = { version = "36.0.1", default-features = false }
 pallet-transaction-payment = { version = "37.0.0", default-features = false }
 pallet-transaction-payment-rpc-runtime-api = { version = "37.0.0", default-features = false }
 scale-info = { version = "2.11.1", default-features = false }
