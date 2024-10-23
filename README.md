@@ -37,21 +37,74 @@ A Polkadot SDK based project such as this one consists of:
 * 🛠️ Depending on your operating system and Rust version, there might be additional
 packages required to compile this template - please take note of the Rust compiler output.
 
-### Build
-
-🔨 Use the following command to build the node without launching it:
+Fetch minimal template code:
 
 ```sh
-cargo build --package minimal-template-node --release
+git clone https://github.com/paritytech/polkadot-sdk-minimal-template.git minimal-template
+
+cd minimal-template
 ```
 
-🐳 Alternatively, build the docker image:
+### Build
+
+🔨 Use the following command to build the template, which by default
+compiles just the runtime. There is also a `node` crate that is able
+to run and load the runtime but the recommended way of starting the
+template is based on Omni Node (TODO: add link to docs).
+
+```sh
+cargo build --release
+```
+
+### Single-node Development Chain with Omni Node
+
+⬇️  Omni Node can be run by using the `polkadot-omni-node` binary, which can be
+downloaded from [Polkadot SDK releases](https://github.com/paritytech/polkadot-sdk/releases/latest).
+
+* 🔗 Once downloaded, it must be added to the `PATH` environment variable like so:
+
+```sh
+export PATH="<path-to-binary>:$PATH"
+```
+
+↩️  The Omni Node needs a runtime chainspec which can be generated based on
+the `minimal-runtime`.
+
+```sh
+# Build the minimal runtime.
+cargo build -p minimal-template-runtime --release
+# Install chain-spec-builder if not installed already.
+cargo install staging-chain-spec-builder
+# Use chain-spec-builder to generate the chain_spec.json file based on the development preset.
+chain-spec-builder create --relay-chain "dev" --para-id 1000 --runtime \
+    <target/release/wbuild/path/to/minimal-template-runtime.wasm> named-preset development
+```
+
+⚙️  The `relay-chain` and `para-id` flags are extra bits of information to configure the node
+for the case of representing a parachain that is connected to a relay chain. They are not relevant
+to minimal template business logic, but they are mandatory information for Omni Node, nonetheless.
+
+🚀 Start Omni Node with manual seal (3 seconds block times) and minimal template runtime based
+chain spec.
+
+```sh
+polkadot-omni-node --chain <path/to/chain_spec.json> --dev-block-time 3000 --tmp
+```
+
+### Single-Node Development Chain with Minimal Template Node
+
+⚙️  Use the following command to build the node as well:
+
+```sh
+cargo build --workspace --release
+```
+
+🐳 Alternatively, build the docker image which builds all the workspace members,
+and has as entry point the node binary:
 
 ```sh
 docker build . -t polkadot-sdk-minimal-template
 ```
-
-### Single-Node Development Chain
 
 👤 The following command starts a single-node development chain:
 
@@ -67,6 +120,14 @@ Development chains:
 * 🧹 Do not persist the state.
 * 💰 Are pre-configured with a genesis state that includes several pre-funded development accounts.
 * 🧑‍⚖️ One development account (`ALICE`) is used as `sudo` accounts.
+
+**Note**: running multiple nodes with the same command used for the single node setup is also possible and
+it can work up to a certain moment. The nodes will be peers, taking their turn in block production if manual
+seal is configured to allow nodes to produce blocks at certain intervals and in the meantime to
+import the blocks produced by peers. However, there is a big chance that at some point in time at least two nodes
+will overlap with the block production at a certain height, at which point they will fork and will not consider
+each others blocks anymore (stopping from being peers). They will continue to participate in blocks production
+of their own fork and possibly of other nodes too.
 
 ### Connect with the Polkadot-JS Apps Front-End
 
